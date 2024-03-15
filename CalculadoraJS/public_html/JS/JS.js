@@ -4,6 +4,8 @@
  */
 
 let mostra = document.getElementById("display");
+let operador = document.getElementById("operador");
+let auxiliar = document.getElementById("auxiliar");
 let bt1 = document.getElementById("bt1");
 let bt2 = document.getElementById("bt2");
 let bt3 = document.getElementById("bt3");
@@ -14,6 +16,11 @@ let bt7 = document.getElementById("bt7");
 let bt8 = document.getElementById("bt8");
 let bt9 = document.getElementById("bt9");
 let bt0 = document.getElementById("bt0");
+let btAdd = document.getElementById("btAdd");
+let btSub = document.getElementById("btSub");
+let btMult = document.getElementById("btMult");
+let btDiv = document.getElementById("btDiv");
+let btEqual = document.getElementById("btEqual");
 
 
 //bt1.addEventListener("click",
@@ -21,7 +28,7 @@ let bt0 = document.getElementById("bt0");
 //        mostra.value = mostra.value + "1";
 //    }
 //);
-
+//eventos para os digitos
 bt1.addEventListener("click",function(){digito(this);});
 bt2.addEventListener("click",function(){digito(this);});
 bt3.addEventListener("click",function(){digito(this);});
@@ -34,9 +41,40 @@ bt9.addEventListener("click",function(){digito(this);});
 //bt0.addEventListener("click",function(){digito(this);});
 bt0.onclick = function(){digito(this);};
 
-function digito(button){
-    mostra.value += button.value;
+//eventos para as operações matematicas
+btAdd.addEventListener("click",function(){operacao(this);});
+btSub.addEventListener("click",function(){operacao(this);});
+btMult.addEventListener("click",function(){operacao(this);});
+btDiv.addEventListener("click",function(){operacao(this);});
+//evento para efetuar as operações
+btEqual.addEventListener("click", resolucao);
+
+function digito(botao){
+    mostra.value += botao.value;
+}
+function operacao(botao){
+    operador.value = botao.value;
+    auxiliar.value = mostra.value;
+    mostra.value = 0;
 }
 
-
+function resolucao(){
+    switch(operador.value){
+        case "+":
+            mostra.value = auxiliar.value + mostra.value;
+            break;
+        case "-":
+            mostra.value = auxiliar.value - mostra.value;
+            break;
+        case "x":
+            mostra.value = auxiliar.value * mostra.value;
+            break;
+        case "÷":
+            mostra.value = auxiliar.value / mostra.value;
+            break;
+        default:       
+    }
+    auxiliar.value = "";
+    operador.value = "";
+}
 
