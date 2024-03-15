@@ -21,6 +21,7 @@ let btSub = document.getElementById("btSub");
 let btMult = document.getElementById("btMult");
 let btDiv = document.getElementById("btDiv");
 let btEqual = document.getElementById("btEqual");
+let btColon = document.getElementById("btColon");
 
 //eventos para os digitos
 bt1.addEventListener("click",function(){digito(this);});
@@ -42,10 +43,16 @@ btMult.addEventListener("click",function(){operacao(this);});
 btDiv.addEventListener("click",function(){operacao(this);});
 //evento para efetuar as operações
 btEqual.addEventListener("click", resolucao);
+//evento para adicionar ponto aos numeros
+btColon.addEventListener("click", function(){digito(this);});
 
 //funções
 function digito(botao){
-    mostra.value += botao.value;
+    if(mostra.value.indexOf(".") != -1){
+        mostra.value += botao.value;
+    } else{
+        mostra.value = parseFloat(mostra.value) + botao.value;
+    }
 }
 function operacao(botao){
     operador.value = botao.value;
