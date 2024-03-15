@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/javascript.js to edit this template
  */
-
+// declaração de variáveis
 let mostra = document.getElementById("display");
 let operador = document.getElementById("operador");
 let auxiliar = document.getElementById("auxiliar");
@@ -22,12 +22,6 @@ let btMult = document.getElementById("btMult");
 let btDiv = document.getElementById("btDiv");
 let btEqual = document.getElementById("btEqual");
 
-
-//bt1.addEventListener("click",
-//    function(){
-//        mostra.value = mostra.value + "1";
-//    }
-//);
 //eventos para os digitos
 bt1.addEventListener("click",function(){digito(this);});
 bt2.addEventListener("click",function(){digito(this);});
@@ -49,6 +43,7 @@ btDiv.addEventListener("click",function(){operacao(this);});
 //evento para efetuar as operações
 btEqual.addEventListener("click", resolucao);
 
+//funções
 function digito(botao){
     mostra.value += botao.value;
 }
@@ -57,11 +52,10 @@ function operacao(botao){
     auxiliar.value = mostra.value;
     mostra.value = 0;
 }
-
 function resolucao(){
     switch(operador.value){
         case "+":
-            mostra.value = auxiliar.value + mostra.value;
+            mostra.value = parseFloat(auxiliar.value) + parseFloat(mostra.value);
             break;
         case "-":
             mostra.value = auxiliar.value - mostra.value;
