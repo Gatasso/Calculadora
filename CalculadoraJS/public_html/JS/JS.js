@@ -65,9 +65,8 @@ function operacao(botao){
     mostra.value = 0;
 }
 function resolucao(){
-    let rotulo = document.createElement("label");
-    rotulo.innerHTML = auxiliar.value + " " + operador.value 
-                     + mostra.value + " = " ;
+    let rotulo = document.createElement("div");
+    rotulo.innerHTML = auxiliar.value + " " + operador.value + mostra.value + " = " ;
     switch(operador.value){
         case "+":
             mostra.value = parseFloat(auxiliar.value) + parseFloat(mostra.value);
@@ -83,7 +82,6 @@ function resolucao(){
             break;
         default:       
     }
-    "Matheus" + "Galasso";
     rotulo.innerHTML += mostra.value;
     fita.appendChild(rotulo);
     auxiliar.value = "";
