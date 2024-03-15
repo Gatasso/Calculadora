@@ -22,6 +22,8 @@ let btMult = document.getElementById("btMult");
 let btDiv = document.getElementById("btDiv");
 let btEqual = document.getElementById("btEqual");
 let btColon = document.getElementById("btColon");
+let fita = document.getElementById("fita");
+
 
 //eventos para os digitos
 bt1.addEventListener("click",function(){digito(this);});
@@ -48,18 +50,24 @@ btColon.addEventListener("click", function(){digito(this);});
 
 //funções
 function digito(botao){
-    if(mostra.value.indexOf(".") != -1){
+    if(mostra.value.indexOf(".") !== -1){
         mostra.value += botao.value;
     } else{
         mostra.value = parseFloat(mostra.value) + botao.value;
     }
 }
 function operacao(botao){
+    if(operador.value !== ""){
+        resolucao();
+    }
     operador.value = botao.value;
     auxiliar.value = mostra.value;
     mostra.value = 0;
 }
 function resolucao(){
+    let rotulo = document.createElement("label");
+    rotulo.innerHTML = auxiliar.value + " " + operador.value 
+                     + mostra.value + " = " ;
     switch(operador.value){
         case "+":
             mostra.value = parseFloat(auxiliar.value) + parseFloat(mostra.value);
@@ -75,6 +83,9 @@ function resolucao(){
             break;
         default:       
     }
+    "Matheus" + "Galasso";
+    rotulo.innerHTML += mostra.value;
+    fita.appendChild(rotulo);
     auxiliar.value = "";
     operador.value = "";
 }
